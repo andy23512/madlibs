@@ -6,9 +6,10 @@ import { SpeechService } from './speech.service';
 import { ListenComponent } from './listen/listen.component';
 import { MadlibsService } from './madlibs.service';
 import { FormsModule } from '@angular/forms';
+import { WordsFormComponent } from './words-form/words-form.component';
 
 @NgModule({
-  declarations: [AppComponent, ListenComponent],
+  declarations: [AppComponent, ListenComponent, WordsFormComponent],
   imports: [BrowserModule, FormsModule],
   providers: [SpeechService, MadlibsService],
   bootstrap: [AppComponent]
