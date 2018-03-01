@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-declare var annyang: any;
+declare var annyang: any; // prevent type error for annyang variable
 
 @Injectable()
 export class SpeechService {
@@ -11,14 +11,18 @@ export class SpeechService {
 
   constructor(private zone: NgZone) {}
 
+  // getter
   get speechSupported(): boolean {
     return !!annyang;
   }
 
   init() {
     const commands = {
-      'noun : noun': noun => {
+      // voice commands
+      'noun :noun': noun => {
+        // NgZone: let outside program connect angular framework
         this.zone.run(() => {
+          // feed new object to subject
           this.words$.next({ type: 'noun', word: noun });
         });
       },
