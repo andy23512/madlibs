@@ -12,7 +12,7 @@ $ cd ../
 
 ## Frontend
 ```
-$ cd madlibs/
+$ cd madlibs-client/
 $ yarn
 $ cd ../
 ```
@@ -26,6 +26,6 @@ $ node server
 
 ## Frontend
 ```
-$ cd madlibs/
+$ cd madlibs-client/
 $ yarn start
 ```
