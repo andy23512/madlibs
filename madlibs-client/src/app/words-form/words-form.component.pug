@@ -1,3 +1,26 @@
-<p>
-  words-form works!
-</p>
+form('(submit)'='done()' #wordsForm='ngForm')
+  .row
+    .col-md-4
+      h3
+        | Nouns
+        a.badge.badge-pill.badge-info(href='http://www.grammar-monster.com/lessons/nouns.htm' title='Nouns are naming words, usually people, places, or things.' target='_blank') ?
+      p.small For best results, please enter 1 <strong>person</strong>, 2 <strong>places</strong>, and 2 <strong>things</strong>.
+      .mb-2(*ngFor='let noun of nouns; index as i; trackBy: trackWords')
+        input.form-control(type='text' name='noun-{{i}}' '[(ngModel)]'='nouns[i]' '[disabled]'='generating' '[placeholder]'='getPlaceholder("noun", i)' required)
+    .col-md-4
+      h3
+        | Verbs
+        a.badge.badge-pill.badge-info(href='http://www.grammar-monster.com/lessons/verbs.htm' title='Verbs are doing words: physical action, mental action, or state of being.' target='_blank') ?
+      p.small For best results, use <strong>2 present tense</strong> verbs, then <strong>3 past tense</strong>.
+      .mb-2(*ngFor='let verb of verbs; index as i; trackBy: trackWords')
+        input.form-control(type='text' name='verb-{{i}}' '[(ngModel)]'='verbs[i]' '[disabled]'='generating' '[placeholder]'='getPlaceholder("verb", i)' required)
+    .col-md-4
+      h3
+        | Adjectives
+        a.badge.badge-pill.badge-info(href='http://www.grammar-monster.com/lessons/adjectives.htm' title='Adjectives are describing words.' target='_blank') ?
+      p.small For best results, be particularly <strong>creative</strong> with your adjectives.
+      .mb-2(*ngFor='let adj of adjs; index as i; trackBy: trackWords')
+        input.form-control(type='text' name='adj-{{i}}' '[(ngModel)]'='adjs[i]' '[disabled]'='generating' placeholder='adjective' required)
+  .row
+    .col.mt-3.mb-3
+      button.btn.btn-block.btn-lg.btn-success('[disabled]'='!wordsForm.form.valid') Go!
