@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SpeechService } from './speech.service';
+import { ListenComponent } from './listen/listen.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListenComponent
   ],
   imports: [
     BrowserModule
