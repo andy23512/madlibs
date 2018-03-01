@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { SpeechService } from './speech.service';
 
 
 @NgModule({
@@ -12,7 +13,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    SpeechService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
