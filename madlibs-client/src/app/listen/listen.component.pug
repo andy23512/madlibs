@@ -1,1 +1,26 @@
-p listen works!
+.alert.alert-info.mt-3
+  h2.text-center Speak to Play
+  p Your browser <a class='alert-link' href='developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#Browser_compatibility'>supports speech recognition</a>! To play a madlib game using speech, follow these instructions:
+  ol
+    li Click the <em>"Listen"</em> button below.
+    li If prompted, grant the app permission to use your device's microphone.
+    li
+      | Clearly say a <em>type</em> of word (also known as a "part of speech") followed by <em>one</em> word to fill in the form below. Here are some examples:
+      ul
+        li <em>"noun <strong>cat</strong>"</em> (person, place, or thing)
+        li <em>"verb <strong>jumping</strong>"</em> (action, present tense), <em>"verb <strong>ran</strong>"</em> (action, past tense)
+        li <em>"adjective <strong>flashy</strong>"</em> (describing word)
+    li Say <em>one command at a time</em>, then wait for the app to assess your speech to fill a madlib field. This could take a few seconds.
+    li Repeat until all fields are filled in.
+  p You may also <em>"Stop"</em> listening at any time and enter (or edit) words manually.
+  .row.mb-3
+    .col.btn-group
+      button.btn.btn-primary.col-6('(click)'='speech.startListening()' '[disabled]'="speech.listening")
+        img.icon(src='/assets/images/mic-on.png')
+        | {{btnLabel}}
+      button.btn.btn-danger.col-6('(click)'='speech.abort()' '[disabled]'='!speech.listening')
+        img.icon(src='/assets/images/mic-off.png')
+        | Stop
+  .row(*ngIf='errorMsg')
+    .col
+      p.alert.alert-warning {{errorMsg}}
