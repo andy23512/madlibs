@@ -8,10 +8,16 @@ import { MadlibsService } from './madlibs.service';
 import { FormsModule } from '@angular/forms';
 import { WordsFormComponent } from './words-form/words-form.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, ListenComponent, WordsFormComponent, KeyboardComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [
+    AppComponent,
+    ListenComponent,
+    WordsFormComponent,
+    KeyboardComponent
+  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [SpeechService, MadlibsService],
   bootstrap: [AppComponent]
 })
