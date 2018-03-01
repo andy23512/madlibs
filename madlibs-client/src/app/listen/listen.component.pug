@@ -21,6 +21,8 @@
       button.btn.btn-danger.col-6('(click)'='speech.abort()' '[disabled]'='!speech.listening')
         img.icon(src='/assets/images/mic-off.png')
         | Stop
-  .row(*ngIf='errorMsg')
+  .row(*ngIf='errorMsg || arrayFull')
     .col
-      p.alert.alert-warning {{errorMsg}}
+      p.alert.alert-warning
+        ng-template('[ngIf]'='errorMsg') {{errorMsg}}
+        ng-template('[ngIf]'='arrayFull') You've already filled in all the available fields for <strong>{{arrayFull}}</strong>.
