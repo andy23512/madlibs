@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import { SpeechService } from '../speech.service';
+import { Words } from '../word';
 
 @Component({
   selector: 'app-listen',
@@ -10,14 +11,15 @@ import { SpeechService } from '../speech.service';
   styleUrls: ['./listen.component.scss']
 })
 export class ListenComponent implements OnInit, OnDestroy {
-  nouns: string[];
-  verbs: string[];
-  adjs: string[];
+  nouns: string[] = new Words().array;
+  verbs: string[] = new Words().array;
+  adjs: string[] = new Words().array;
   nounSub: Subscription;
   verbSub: Subscription;
   adjSub: Subscription;
   errorsSub: Subscription;
   errorMsg: Subscription;
+  arrayFull: string;
 
   constructor(public speech: SpeechService) {}
 
@@ -40,6 +42,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(noun => {
         this._setError();
         console.log('noun:', noun);
+        this.nouns = this._updateWords('nouns', this.nouns, noun);
       });
   }
 
@@ -50,6 +53,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(verb => {
         this._setError();
         console.log('verb:', verb);
+        this.verbs = this._updateWords('verbs', this.verbs, verb);
       });
   }
 
@@ -60,6 +64,7 @@ export class ListenComponent implements OnInit, OnDestroy {
       .subscribe(adj => {
         this._setError();
         console.log('adjective:', adj);
+        this.adjs = this._updateWords('adjectives', this.adjs, adj);
       });
   }
 
@@ -73,6 +78,25 @@ export class ListenComponent implements OnInit, OnDestroy {
       this.errorMsg = err.message;
     } else {
       this.errorMsg = null;
+    }
+  }
+
+  private _updateWords(type: string, arr: string[], newWord: string) {
+    const _checkArrayFull = arr.every(item => !!item === true);
+    if (_checkArrayFull) {
+      this.arrayFull = type;
+      return arr;
+    } else {
+      let _added = false;
+      this.arrayFull = null;
+      return arr.map(item => {
+        if (!item && !_added) {
+          _added = true;
+          return newWord;
+        } else {
+          return item;
+        }
+      });
     }
   }
 
