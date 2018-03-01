@@ -1,3 +1,4 @@
 .container
   h1.text-center Madlibs
   app-listen(*ngIf="speech.speechSupported")
+  app-keyboard(*ngIf="!speech.speechSupported")
