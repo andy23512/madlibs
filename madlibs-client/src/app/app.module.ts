@@ -10,6 +10,7 @@ import { WordsFormComponent } from './words-form/words-form.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GenerateWordsComponent } from './generate-words/generate-words.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GenerateWordsComponent } from './generate-words/generate-words.componen
     ListenComponent,
     WordsFormComponent,
     KeyboardComponent,
-    GenerateWordsComponent
+    GenerateWordsComponent,
+    ProgressBarComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [SpeechService, MadlibsService],
