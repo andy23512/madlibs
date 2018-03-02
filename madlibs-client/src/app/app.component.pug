@@ -1,4 +1,6 @@
 .container
   h1.text-center Madlibs
-  app-listen(*ngIf="speech.speechSupported")
-  app-keyboard(*ngIf="!speech.speechSupported")
+  ng-template('[ngIf]'='!ml.madlibReady || !ml.pronoun')
+    app-listen(*ngIf="speech.speechSupported")
+    app-keyboard(*ngIf="!speech.speechSupported")
+  app-madlib(*ngIf='ml.madlibReady && ml.pronoun')

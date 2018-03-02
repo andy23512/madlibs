@@ -112,7 +112,7 @@ export class MadlibsService {
 
   getPronoun$() {
     return this.http
-      .get(`${this._API}pronoun/genderedd`)
+      .get(`${this._API}pronoun/gendered`)
       .catch(this._errorHandler);
   }
 }
