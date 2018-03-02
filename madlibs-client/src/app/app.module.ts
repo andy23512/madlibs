@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { WordsFormComponent } from './words-form/words-form.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GenerateWordsComponent } from './generate-words/generate-words.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListenComponent,
     WordsFormComponent,
-    KeyboardComponent
+    KeyboardComponent,
+    GenerateWordsComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [SpeechService, MadlibsService],
