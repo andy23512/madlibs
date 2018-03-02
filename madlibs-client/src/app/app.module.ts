@@ -11,6 +11,7 @@ import { KeyboardComponent } from './keyboard/keyboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GenerateWordsComponent } from './generate-words/generate-words.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { MadlibComponent } from './madlib/madlib.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     WordsFormComponent,
     KeyboardComponent,
     GenerateWordsComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MadlibComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [SpeechService, MadlibsService],
