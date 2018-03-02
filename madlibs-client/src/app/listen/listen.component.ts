@@ -106,4 +106,10 @@ export class ListenComponent implements OnInit, OnDestroy {
     this.adjSub.unsubscribe();
     this.errorsSub.unsubscribe();
   }
+
+  onFetchedAPIWords(e) {
+    this.nouns = e.nouns;
+    this.verbs = e.verbs;
+    this.adjs = e.adjs;
+  }
 }

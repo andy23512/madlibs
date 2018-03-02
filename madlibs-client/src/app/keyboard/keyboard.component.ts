@@ -11,4 +11,10 @@ export class KeyboardComponent {
   verbs: string[] = new Words().array;
   adjs: string[] = new Words().array;
   constructor() {}
+
+  onFetchedAPIWords(e) {
+    this.nouns = e.nouns;
+    this.verbs = e.verbs;
+    this.adjs = e.adjs;
+  }
 }
