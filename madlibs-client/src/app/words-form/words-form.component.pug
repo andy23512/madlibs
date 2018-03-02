@@ -23,4 +23,5 @@ form('(submit)'='done()' #wordsForm='ngForm')
         input.form-control(type='text' name='adj-{{i}}' '[(ngModel)]'='adjs[i]' '[disabled]'='generating' placeholder='adjective' required)
   .row
     .col.mt-3.mb-3
-      button.btn.btn-block.btn-lg.btn-success('[disabled]'='!wordsForm.form.valid') Go!
+      button.btn.btn-block.btn-lg.btn-success(*ngIf='!generating' '[disabled]'='!wordsForm.form.valid') Go!
+      app-progress-bar('[hidden]'='!generating')
