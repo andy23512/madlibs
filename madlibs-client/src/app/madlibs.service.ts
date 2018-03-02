@@ -11,6 +11,8 @@ import 'rxjs/add/observable/forkJoin';
 export class MadlibsService {
   submit$ = new Subject<any>();
   words: any;
+  madlibReady = false;
+  pronoun: any;
 
   private _API = 'http://localhost:8084/api/';
 
@@ -98,5 +100,19 @@ export class MadlibsService {
         adjs: res[2]
       };
     });
+  }
+
+  setMadlibReady(val: boolean) {
+    this.madlibReady = val;
+  }
+
+  setPronoun(obj) {
+    this.pronoun = obj;
+  }
+
+  getPronoun$() {
+    return this.http
+      .get(`${this._API}pronoun/genderedd`)
+      .catch(this._errorHandler);
   }
 }
