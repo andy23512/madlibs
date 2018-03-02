@@ -1,3 +1,16 @@
-<p>
-  generate-words works!
-</p>
+h2.text-center.mt-3 Generate Words
+
+p You may choose to generate all the necessary madlib words randomly. Doing so will replace any words you may have previously entered.
+
+p
+  button.btn.btn-primary.btn-block('(click)'='fetchWords()')
+    ng-template('[ngIf]'="!loading") Generate Words
+    ng-template('[ngIf]'="loading") Generating...
+
+p.alert.alert-success(*ngIf='generated')
+  strong Success!
+  | Madlib words have been generated. Please scroll down to view or edit your words.
+
+p.alert.alert-danger(*ngIf='error')
+  strong Oops!
+  | An error occurred while trying to automatically generate words. Please try again or enter your own words!
